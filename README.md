@@ -17,17 +17,17 @@ The `setup` function has `commands` option, which is a list of objects, containi
 
 ```lua
 {
-	"biozz/boop.nvim",
-	config = function()
-		require("boop").setup({
-     commands = {
-         {
-             name = "My command",
-             cmd = [[%!my_command]]
-         }
-     }
+  "biozz/boop.nvim",
+  config = function()
+    require("boop").setup({
+      commands = {
+        {
+          name = "My command",
+          cmd = [[%!my_command]]
+        }
+      }
     })
-	end,
+  end,
 },
 ```
 
