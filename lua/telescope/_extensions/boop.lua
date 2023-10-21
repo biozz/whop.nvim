@@ -1,52 +1,49 @@
 local actions = require("telescope.actions")
 local finders = require("telescope.finders")
 local pickers = require("telescope.pickers")
-local conf = require("telescope.config").values
-local entry_display = require("telescope.pickers.entry_display")
+local sorters = require("telescope.sorters")
 local action_state = require("telescope.actions.state")
 
-local commands = require("boop").commands
+local boop = require("boop")
 
-local function action(cmd)
-	vim.cmd([[%!]] .. cmd.cmd)
-end
-
-local function search(opts)
-	local displayer = entry_display.create({
-		separator = " ",
-		items = {
-			{ width = 40 },
-			{ width = 18 },
-			{ remaining = true },
-		},
-	})
-	local make_display = function(entry)
-		return displayer({
-			entry.name .. ": " .. entry.cmd,
-		})
-	end
+local function boop_picker()
+	-- this is important, because picker buffer number
+	-- is different and we need to use to execute commands
+	-- in a specific buffer, which is currently open
+	local bufnr = vim.api.nvim_get_current_buf()
 
 	pickers
-		.new(opts, {
+		.new({}, {
 			prompt_title = "Boop",
-			sorter = conf.generic_sorter(opts),
 			finder = finders.new_table({
-				results = commands,
+				results = boop._commands,
 				entry_maker = function(entry)
 					return {
-						ordinal = entry.name .. entry.cmd,
-						display = make_display,
-						name = entry.name,
-						value = entry.cmd,
+						value = entry,
+						display = entry.name,
+						ordinal = entry.name,
 					}
 				end,
 			}),
-			attach_mappings = function(prompt_bufnr)
-				actions.select_default:replace(function()
-					local cmd = action_state.get_selected_entry()
+			sorter = sorters.get_generic_fuzzy_sorter(),
+			attach_mappings = function(prompt_bufnr, map)
+				local function execute_command()
+					local selection = action_state.get_selected_entry()
+					vim.api.nvim_buf_call(bufnr, function()
+						if type(selection.value.cmd) == "function" then
+							selection.value.cmd()
+						elseif type(selection.value.cmd) == "string" then
+							vim.cmd(selection.value.cmd)
+						else
+							print("Unexpected cmd type, only function and string are supported")
+						end
+					end)
 					actions.close(prompt_bufnr)
-					action(cmd)
-				end)
+				end
+
+				map("i", "<CR>", execute_command)
+				map("n", "<CR>", execute_command)
+
 				return true
 			end,
 		})
@@ -55,7 +52,5 @@ end
 
 return require("telescope").register_extension({
 	setup = function(ext_config, config) end,
-	exports = {
-		boop = search,
-	},
+	exports = { boop = boop_picker },
 })
