@@ -105,6 +105,10 @@ local commands = {
 		name = "[builtin] Python dict to JSON (python)",
 		cmd = [[%!python -c 'import sys; import json; print(json.dumps(sys.stdin.read()))]],
 	},
+    {
+        name = "[builtin] Replace commas with newlines (vim)",
+        cmd = [[%s/,\s*/\r/g]]
+    }
 }
 
 function M.setup(config)
