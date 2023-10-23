@@ -4,9 +4,9 @@ local pickers = require("telescope.pickers")
 local sorters = require("telescope.sorters")
 local action_state = require("telescope.actions.state")
 
-local boop = require("boop")
+local whop = require("whop")
 
-local function boop_picker()
+local function whop_picker()
 	-- this is important, because picker buffer number
 	-- is different and we need to use to execute commands
 	-- in a specific buffer, which is currently open
@@ -14,9 +14,9 @@ local function boop_picker()
 
 	pickers
 		.new({}, {
-			prompt_title = "Boop",
+			prompt_title = "whop",
 			finder = finders.new_table({
-				results = boop._commands,
+				results = whop._commands,
 				entry_maker = function(entry)
 					return {
 						value = entry,
@@ -52,5 +52,5 @@ end
 
 return require("telescope").register_extension({
 	setup = function(ext_config, config) end,
-	exports = { boop = boop_picker },
+	exports = { whop = whop_picker },
 })
