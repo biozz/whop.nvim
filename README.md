@@ -7,7 +7,7 @@ This version uses [Telescope](https://github.com/nvim-telescope/telescope.nvim) 
 ## Installation
 
 - install `biozz/whop.nvim` with your favourite package manager
-- add your custom commands within `setup` function
+- configure with `require('whop').setup({})` (see Custom commands below)
 - load Telescope extension `telescope.load_extension("whop")`
 - use `:Telescope whop` to open the commands picker
 
@@ -31,4 +31,5 @@ The `setup` function has `commands` option, which is a list of objects, containi
 },
 ```
 
-`cmd` can be either string or Lua function. If it is a string, it will be passed to `vim.cmd` and executed as if you typed `:` (colon), the value of the `cmd` and hit enter.
+`cmd` can be either string or Lua function.
+If it is a string, it will be passed to `vim.cmd` and executed as if you typed `:` (colon), the value of the `cmd` and hit enter.
