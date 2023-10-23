@@ -105,32 +105,6 @@ local commands = {
 		name = "[builtin] Python dict to JSON (python)",
 		cmd = [[%!python -c 'import sys; import json; print(json.dumps(sys.stdin.read()))]],
 	},
-	-- TODO: add more commands:
-	--  - URL Decode
-	--  - HTML Encode
-	--  - HTML Decode
-	--  - Sort json
-	--  - Markdown quote
-	--  - Count characters (view only)
-	--  - Count words (view only)
-	--  - Shuffle lines
-	--  - Change cURL format from Windows to Unix
-	--  - JSON to Query String
-	--  - JSON to YAML
-	--  - Lorem ipsum
-	--  - HEX to RGB
-	--  - RGB to HEX
-	--  - JSON to CSV
-	--  - CSV to JSON
-	--  - Lower Case
-	--  - Camel Case
-	--  - Snake Case
-	--  - Upper Case
-	--  - Kebab Case
-	--  - Replace single quotes with double quotes
-	--  - Replace double quotes with single quotes
-	--  - Wrap with single quotes
-	--  - Wrap with double quotes
 }
 
 function M.setup(config)
