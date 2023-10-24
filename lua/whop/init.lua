@@ -25,14 +25,14 @@ local commands = {
 		name = "[builtin] URL Decode (python)",
 		cmd = [[%!python -c 'import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()[:-1]), end="")']],
 	},
-    {
-        name = "[builtin] HTML Decode (python)",
-        cmd = [[%!python -c 'import sys; import html; print(html.unescape(sys.stdin.read()[:-1]))']],
-    },
-    {
-        name = "[builtin] HTML Encode (python)",
-        cmd = [[%!python -c 'import sys; import html; print(html.escape(sys.stdin.read()[:-1]))']],
-    },
+	{
+		name = "[builtin] HTML Decode (python)",
+		cmd = [[%!python -c 'import sys; import html; print(html.unescape(sys.stdin.read()[:-1]))']],
+	},
+	{
+		name = "[builtin] HTML Encode (python)",
+		cmd = [[%!python -c 'import sys; import html; print(html.escape(sys.stdin.read()[:-1]))']],
+	},
 	{
 		name = "[builtin] Minify JSON (jq)",
 		cmd = [[%!jq -r tostring]],
@@ -117,10 +117,10 @@ local commands = {
 		name = "[builtin] Python dict to JSON (python)",
 		cmd = [[%!python -c 'import sys; import json; print(json.dumps(sys.stdin.read()[:-1]))]],
 	},
-    {
-        name = "[builtin] Replace commas with newlines (vim)",
-        cmd = [[%s/,\s*/\r/g]]
-    }
+	{
+		name = "[builtin] Replace commas with newlines (vim)",
+		cmd = [[%s/,\s*/\r/g]],
+	},
 }
 
 function M.setup(config)
