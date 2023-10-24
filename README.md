@@ -4,6 +4,8 @@ This is a NeoVim tribute to the amazing Mac app - [Boop](https://boop.okat.best/
 
 This version uses [Telescope](https://github.com/nvim-telescope/telescope.nvim) to pick commands. And then it uses entire buffer content as an input to the chosen command.
 
+[![asciicast](https://asciinema.org/a/wsJSeLEqNaHT8f3V6JH4NQRFr.svg)](https://asciinema.org/a/wsJSeLEqNaHT8f3V6JH4NQRFr)
+
 ## Installation
 
 - install `biozz/whop.nvim` with your favourite package manager
@@ -33,3 +35,12 @@ The `setup` function has `commands` option, which is a list of objects, containi
 
 `cmd` can be either string or Lua function.
 If it is a string, it will be passed to `vim.cmd` and executed as if you typed `:` (colon), the value of the `cmd` and hit enter.
+
+## Similar apps and alternatives
+
+- [Boop](https://github.com/IvanMathy/Boop)
+- [Boop-GTK](https://github.com/zoeyfyi/Boop-GTK)
+- [Woop](https://github.com/felixse/Woop)
+- [Bloop](https://github.com/Blakeinstein/Bloop)
+- [Gool](https://github.com/cloudingcity/gool)
+

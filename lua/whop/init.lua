@@ -22,6 +22,18 @@ local commands = {
 		cmd = [[%!jq -sRr @uri]],
 	},
 	{
+		name = "[builtin] URL Decode (python)",
+		cmd = [[%!python -c 'import sys; from urllib.parse import unquote; print(unquote(sys.stdin.read()[:-1]), end="")']],
+	},
+    {
+        name = "[builtin] HTML Decode (python)",
+        cmd = [[%!python -c 'import sys; import html; print(html.unescape(sys.stdin.read()[:-1]))']],
+    },
+    {
+        name = "[builtin] HTML Encode (python)",
+        cmd = [[%!python -c 'import sys; import html; print(html.escape(sys.stdin.read()[:-1]))']],
+    },
+	{
 		name = "[builtin] Minify JSON (jq)",
 		cmd = [[%!jq -r tostring]],
 	},
@@ -94,8 +106,8 @@ local commands = {
 		cmd = [[%!sort | uniq -u]],
 	},
 	{
-		name = "[builtin] Query string to json (tr, python)",
-		cmd = [[%!tr -d '\n'  | python -c 'import sys; from urllib.parse import parse_qs; import json; print(json.dumps(parse_qs(sys.stdin.read())))']],
+		name = "[builtin] Query string to json (python)",
+		cmd = [[%!python -c 'import sys; from urllib.parse import parse_qs; import json; print(json.dumps(parse_qs(sys.stdin.read()[:-1])))']],
 	},
 	{
 		name = "[builtin] Sum all (awk)",
@@ -103,7 +115,7 @@ local commands = {
 	},
 	{
 		name = "[builtin] Python dict to JSON (python)",
-		cmd = [[%!python -c 'import sys; import json; print(json.dumps(sys.stdin.read()))]],
+		cmd = [[%!python -c 'import sys; import json; print(json.dumps(sys.stdin.read()[:-1]))]],
 	},
     {
         name = "[builtin] Replace commas with newlines (vim)",
