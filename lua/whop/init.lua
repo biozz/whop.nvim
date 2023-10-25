@@ -121,6 +121,14 @@ local commands = {
 		name = "[builtin] Replace commas with newlines (vim)",
 		cmd = [[%s/,\s*/\r/g]],
 	},
+	{
+		name = "[builtin] Ansible Vault Encrypt (ansible-vault)",
+		cmd = [[%!ansible-vault encrypt]],
+	},
+	{
+		name = "[builtin] Ansible Vault Decrypt (ansible-vault)",
+		cmd = [[%!ansible-vault decrypt]],
+	},
 }
 
 function M.setup(config)
