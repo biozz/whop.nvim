@@ -30,13 +30,7 @@ local function whop_picker()
 				local function execute_command()
 					local selection = action_state.get_selected_entry()
 					vim.api.nvim_buf_call(bufnr, function()
-						if type(selection.value.cmd) == "function" then
-							selection.value.cmd()
-						elseif type(selection.value.cmd) == "string" then
-							vim.cmd(selection.value.cmd)
-						else
-							print("Unexpected cmd type, only function and string are supported")
-						end
+                        whop.run_cmd(selection.value.cmd)
 					end)
 					actions.close(prompt_bufnr)
 				end

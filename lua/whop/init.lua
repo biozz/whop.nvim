@@ -125,6 +125,37 @@ local commands = {
 
 function M.setup(config)
 	M._commands = vim.tbl_deep_extend("force", commands, config.commands or {})
+
+	M._command_names = {}
+	for _, v in ipairs(M._commands) do
+		table.insert(M._command_names, v.name)
+	end
+end
+
+function M.run_cmd(cmd)
+	if type(cmd) == "function" then
+		cmd()
+	elseif type(cmd) == "string" then
+		vim.cmd(cmd)
+	else
+		print("Unexpected cmd type, only function and string are supported")
+	end
+end
+
+function M.select()
+	vim.ui.select(M._command_names, {
+		prompt = "whop",
+		format_item = function(item)
+			return item
+		end,
+	}, function(choice)
+		for _, v in ipairs(M._commands) do
+			if v.name == choice then
+				M.run_cmd(v.cmd)
+				return
+			end
+		end
+	end)
 end
 
 return M

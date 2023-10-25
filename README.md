@@ -2,7 +2,9 @@
 
 This is a NeoVim tribute to the amazing Mac app - [Boop](https://boop.okat.best/).
 
-This plugin uses [Telescope](https://github.com/nvim-telescope/telescope.nvim) to pick commands. Then it uses entire buffer content as an input to the chosen command. After running the command, the buffer content is replaced with the result of the command.
+This plugin uses [Telescope](https://github.com/nvim-telescope/telescope.nvim) or `vim.ui.select()` to pick commands.
+Then it uses entire buffer content as an input to the chosen command.
+After running the command, the buffer content is replaced with the result of the command.
 
 Here is a demo:
 
@@ -12,6 +14,11 @@ Here is a demo:
 
 - install `biozz/whop.nvim` with your favourite package manager
 - configure with `require('whop').setup({})` (see Custom commands below)
+
+Now you have two options to start using it: either with Telescope or with `vim.ui.select()`.
+
+### Telescope
+
 - load Telescope extension `telescope.load_extension("whop")`
 - use `:Telescope whop` to open the commands picker
 
@@ -30,14 +37,36 @@ Here is an all-in-one example using [Lazy](https://github.com/folke/lazy.nvim):
   },
   config = function()
     telescope.load_extension("whop")
-    vim.keymap.set("n", "<leader>tw", ":Telescope whop<CR>", { noremap = true, desc = "Telescope whop.nvim" })
+    vim.keymap.set("n", "<leader>tw", ":Telescope whop<CR>", { noremap = true, desc = "whop.nvim (telescope)" })
+  end
+}
+```
+
+### `vim.ui.select()`
+
+The select function is available in `require('whop').select()`. The 
+
+```lua
+{
+  "biozz/whop.nvim",
+  config = function()
+    local whop = require("whop")
+    whop.setup({})
+    vim.keymap.set("n", "<leader>ww", function()
+      whop.select()
+    end, { noremap = true, desc = "whop.nvim" })
   end
 }
 ```
 
 ## Custom commands
 
-The `setup` function has `commands` option, which is a list of objects, containing `name` and `cmd`:
+The `setup` function has `commands` option, which is a list of objects, containing `name` and `cmd`.
+
+`cmd` can be either string or Lua function.
+If it is a string, it will be passed to `vim.cmd` and executed as if you typed `:` (colon), the value of the `cmd` and hit enter.
+If it is a function, it will be called when picked.
+
 
 ```lua
 {
@@ -47,16 +76,19 @@ The `setup` function has `commands` option, which is a list of objects, containi
       commands = {
         {
           name = "My command",
-          cmd = [[%!my_command]]
+          cmd = [[%!my_command]],
+        },
+        {
+          name = "My other command",
+          cmd = function()
+            vim.cmd('%s/ //g')
+          end,
         }
       }
     })
   end,
 }
 ```
-
-`cmd` can be either string or Lua function.
-If it is a string, it will be passed to `vim.cmd` and executed as if you typed `:` (colon), the value of the `cmd` and hit enter.
 
 ## Similar apps and alternatives
 
