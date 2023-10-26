@@ -44,7 +44,7 @@ Here is an all-in-one example using [Lazy](https://github.com/folke/lazy.nvim):
 
 ### `vim.ui.select()`
 
-The select function is available in `require('whop').select()`. The 
+The select function is available in `require('whop').select()`.
 
 ```lua
 {
