@@ -132,8 +132,15 @@ local commands = {
 }
 
 function M.setup(config)
-	M._commands = vim.tbl_deep_extend("force", commands, config.commands or {})
+	M._commands = commands
+    -- Prepend the commands from the config, so
+    -- they are at the top of the list
+	for _, cmd in ipairs(config.commands or {}) do
+		table.insert(M._commands, 1, cmd)
+	end
 
+    -- Prepare command names to be used in telescope
+    -- and vim.select() pickers
 	M._command_names = {}
 	for _, v in ipairs(M._commands) do
 		table.insert(M._command_names, v.name)
