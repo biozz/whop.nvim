@@ -10,9 +10,6 @@ Here is a list of things you can do right now to improve this package:
 - add compatibility with Boop scripts
 
 Here is a list of ideas for builtin commands:
-- URL Decode
-- HTML Encode
-- HTML Decode
 - Sort json
 - Markdown quote
 - Count characters (view only)

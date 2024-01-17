@@ -1,0 +1,78 @@
+================================================================================
+WHOP                                                                      *whop*
+
+This is a NeoVim tribute to the amazing Mac app - Boop
+(https://boop.okat.best/).
+
+This plugin uses [Telescope](https://github.com/nvim-telescope/telescope.nvim)
+or `vim.ui.select()` to pick commands. Then it uses entire buffer content as an
+input to the chosen command. After running the command, the buffer content is
+replaced with the result of the command.
+
+`:Whop {command}`
+
+The plugin can be configured using the |whop.setup()| function.
+
+
+Whop                                                                    *Whop*
+
+
+    Fields: ~
+        {setup}   (function)  setup the plugin
+        {run_cmd} (function)  runs the selected command
+        {select}  (function)  draws builtin vim.ui.select window
+
+
+whop.setup({options})                                           *whop.setup()*
+    Setup the plugin
+
+    Defaults: ~
+    {}
+
+    Parameters: ~
+        {options} (Config)  config table
+
+
+whop.run_cmd()                                                *whop.run_cmd()*
+    Runs a selected command
+
+
+
+whop.select()                                                  *whop.select()*
+    Select a command via builtin vim.ui.select
+
+
+
+whop.find_and_run_cmd()                              *whop.find_and_run_cmd()*
+    Find a command by name and run it. Do nothing if the command was not found.
+
+
+
+
+================================================================================
+ConfigModule                                                    *ConfigModule*
+
+
+    Fields: ~
+        {defaults} (Config)  default options
+        {options}  (Config)  config table extending defaults
+
+
+Config                                                                *Config*
+
+
+    Fields: ~
+        {commands} (table)  a set of user defined commands
+
+
+
+================================================================================
+BuiltinCommandsModule                                  *BuiltinCommandsModule*
+
+
+    Fields: ~
+        {commands} (table)  a set of builtin commands
+
+
+
+ vim:tw=78:ts=8:ft=help:norl:

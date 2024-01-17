@@ -15,7 +15,11 @@ Here is a demo:
 - install `biozz/whop.nvim` with your favourite package manager
 - configure with `require('whop').setup({})` (see Custom commands below)
 
-Now you have two options to start using it: either with Telescope or with `vim.ui.select()`.
+Now you have three options to start using it:
+
+- Telescope extension
+- `vim.ui.select()`
+- `:Whop` command
 
 ### Telescope
 
