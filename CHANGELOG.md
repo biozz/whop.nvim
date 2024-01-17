@@ -1,5 +1,9 @@
 # Changelog
 
+## 2024-01-17 - v1.0.1
+
+- Bring back Telescope extenstion, which was removed in the `v1.0.0`
+
 ## 2024-01-17 - v1.0.0
 
 This is a major rewrite of the plugin in terms of structure. It now uses the new plugin layout from [my-awesome-plugin.nvim](https://github.com/S1M0N38/my-awesome-plugin.nvim).
