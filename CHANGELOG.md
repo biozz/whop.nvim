@@ -1,8 +1,14 @@
 # Changelog
 
+## Unreleased
+
+- Add `opts` table to telescope extension to be able to customize the picker
+- Minor changes related to typing and linting
+- Add `.luacheckrc`, `.neoconf.json` and `.stylua.toml`
+
 ## 2024-01-17 - v1.0.1
 
-- Bring back Telescope extenstion, which was removed in the `v1.0.0`
+- Bring back Telescope extension, which was removed in the `v1.0.0`
 
 ## 2024-01-17 - v1.0.0
 

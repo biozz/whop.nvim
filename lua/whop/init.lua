@@ -68,7 +68,7 @@ end
 
 --- Find a command by name and run it.
 --- Do nothing if the command was not found.
---- @name string: the name of the command to run
+--- @param name string: the name of the command to run
 whop.find_and_run_cmd = function(name)
   for _, v in ipairs(whop._commands) do
     if v.name == name then
