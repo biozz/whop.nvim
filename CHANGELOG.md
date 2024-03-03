@@ -1,10 +1,22 @@
 # Changelog
 
-## Unreleased
+## 2024-03-03 - v1.1.0
 
 - Add `opts` table to telescope extension to be able to customize the picker
 - Minor changes related to typing and linting
 - Add `.luacheckrc`, `.neoconf.json` and `.stylua.toml`
+- Add more builin commands:
+  - PowerShell escape characters to Unix
+  - Change single quotes to double quotes
+  - Change double quotes to single quotes
+  - snake_case to CamelCase (python)
+  - CamelCase to snake_case (python)
+  - snake_case to kebab-case (python)
+  - kebab-case to snake_case (python)
+  - To UPPER case (python)
+  - To lower case (python)
+  - Base32 Encode (python)
+  - Base32 Decode (python)
 
 ## 2024-01-17 - v1.0.1
 

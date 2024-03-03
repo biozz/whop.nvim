@@ -1,8 +1,8 @@
 ================================================================================
 WHOP                                                                      *whop*
 
-This is a NeoVim tribute to the amazing Mac app - Boop
-(https://boop.okat.best/).
+This is a NeoVim tribute to the amazing Mac app -
+[Boop](https://boop.okat.best/).
 
 This plugin uses [Telescope](https://github.com/nvim-telescope/telescope.nvim)
 or `vim.ui.select()` to pick commands. Then it uses entire buffer content as an

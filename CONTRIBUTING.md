@@ -15,7 +15,6 @@ Here is a list of ideas for builtin commands:
 - Count characters (view only)
 - Count words (view only)
 - Shuffle lines
-- Change cURL format from Windows to Unix
 - JSON to Query String
 - JSON to YAML
 - Lorem ipsum
@@ -23,13 +22,6 @@ Here is a list of ideas for builtin commands:
 - RGB to HEX
 - JSON to CSV
 - CSV to JSON
-- Lower Case
-- Camel Case
-- Snake Case
-- Upper Case
-- Kebab Case
-- Replace single quotes with double quotes
-- Replace double quotes with single quotes
 - Wrap with single quotes
 - Wrap with double quotes
 

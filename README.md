@@ -10,6 +10,16 @@ Here is a demo:
 
 [![asciicast](https://asciinema.org/a/wsJSeLEqNaHT8f3V6JH4NQRFr.svg)](https://asciinema.org/a/wsJSeLEqNaHT8f3V6JH4NQRFr)
 
+Here is what this plugin can do:
+
+- Encode and decode base64, base32, url params, html
+- Format and minify json
+- Hashing (md5, sha1, sha256, sha512)
+- Common strings manipulation (rever, remove whitespace, case change)
+- Large files manipulation (join lines, wrap each line with single and double quotes, remove duplicate lines)
+- Encryption (ansible vaule)
+- and more (see [`builtin.lua`](./lua/whop/builtin.lua))
+
 ## Installation
 
 - install `biozz/whop.nvim` with your favourite package manager

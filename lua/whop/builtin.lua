@@ -16,6 +16,14 @@ M.commands = {
     cmd = [[%!base64 -d]],
   },
   {
+    name = "[builtin] Base32 Encode (python)",
+    cmd = [[%!python -c 'import sys; import base64; print(base64.b32encode(sys.stdin.read()[:-1].encode()).decode())']],
+  },
+  {
+    name = "[builtin] Base32 Decode (python)",
+    cmd = [[%!python -c 'import sys; import base64; print(base64.b32decode(sys.stdin.read()[:-1]).decode())']],
+  },
+  {
     name = "[builtin] Format JSON (jq)",
     cmd = [[%!jq]],
   },
@@ -130,6 +138,45 @@ M.commands = {
   {
     name = "[builtin] Ansible Vault Decrypt (ansible-vault)",
     cmd = [[%!ansible-vault decrypt]],
+  },
+  {
+    name = "[builtin] PowerShell escape characters to Unix",
+    cmd = function()
+      vim.cmd([[%s/\^$/\\/]])
+      vim.cmd([[%s/\^\\\^/\\/g]])
+    end,
+  },
+  {
+    name = "[builtin] Change single quotes to double quotes",
+    cmd = [[%s/'/"/g]],
+  },
+  {
+    name = "[builtin] Change double quotes to single quotes",
+    cmd = [[%s/"/'/g]],
+  },
+  {
+    name = "[builtin] snake_case to CamelCase (python)",
+    cmd = [[%!python -c 'import sys; print("".join(map(lambda x: x[0].upper() + x[1:], sys.stdin.read()[:-1].split("_"))))']],
+  },
+  {
+    name = "[builtin] CamelCase to snake_case (python)",
+    cmd = [[%!python -c 'import sys; print("".join(map(lambda y: f"_{y.lower()}" if y.isupper() else y, [ z for z in sys.stdin.read()[:-1] ]))[1:])']],
+  },
+  {
+    name = "[builtin] snake_case to kebab-case (python)",
+    cmd = [[%!python -c 'import sys; print(sys.stdin.read()[:-1].replace("_", "-"))']],
+  },
+  {
+    name = "[builtin] kebab-case to snake_case (python)",
+    cmd = [[%!python -c 'import sys; print(sys.stdin.read()[:-1].replace("-", "_"))']],
+  },
+  {
+    name = "[builtin] To UPPER case (python)",
+    cmd = [[%!python -c 'import sys; print(sys.stdin.read()[:-1].upper())']],
+  },
+  {
+    name = "[builtin] To lower case (python)",
+    cmd = [[%!python -c 'import sys; print(sys.stdin.read()[:-1].lower())']],
   },
 }
 
