@@ -44,7 +44,13 @@ end
 
 --- Runs a selected command
 --- @param cmd string: command to run
-whop.run_cmd = function(cmd)
+--- @param mode string: current mode (n or v)
+whop.run_cmd = function(cmd, mode)
+  if mode == "v" then
+    local range_cmd = cmd:gsub("%%", "'<,'>")
+    vim.cmd(range_cmd)
+    return
+  end
   if type(cmd) == "function" then
     cmd()
   elseif type(cmd) == "string" then
@@ -62,21 +68,25 @@ whop.select = function()
       return item
     end,
   }, function(choice)
-    whop.find_and_run_cmd(choice)
+    local cmd = whop.find_cmd(choice)
+    if cmd == nil then
+      return
+    end
+    whop.run_cmd(cmd.cmd, "n")
   end)
 end
 
 --- Find a command by name and run it.
 --- Do nothing if the command was not found.
 --- @param name string: the name of the command to run
-whop.find_and_run_cmd = function(name)
+whop.find_cmd = function(name)
   for _, v in ipairs(whop._commands) do
     if v.name == name then
-      whop.run_cmd(v.cmd)
-      return true
+      return v
     end
   end
-  return false
+  print("Command not found")
+  return nil
 end
 
 return whop
