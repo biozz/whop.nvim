@@ -17,8 +17,8 @@ Here is what this plugin can do:
 - Hashing (md5, sha1, sha256, sha512)
 - Common strings manipulation (rever, remove whitespace, case change)
 - Large files manipulation (join lines, wrap each line with single and double quotes, remove duplicate lines)
-- Encryption (ansible vaule)
-- and more (see [`builtin.lua`](./lua/whop/builtin.lua))
+- Encryption (ansible value)
+- and more (see [BUILTINS.md](./BUILTINS.md) and [`builtin.lua`](./lua/whop/builtin.lua))
 
 ## Installation
 
@@ -111,4 +111,5 @@ If it is a function, it will be called when picked.
 - [Woop](https://github.com/felixse/Woop)
 - [Bloop](https://github.com/Blakeinstein/Bloop)
 - [Gool](https://github.com/cloudingcity/gool)
-
+- [CyberChef](https://gchq.github.io/CyberChef/)
+- [sttr](https://github.com/abhimanyu003/sttr)
