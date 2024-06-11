@@ -8,7 +8,7 @@ Here is a list of things you can do right now to improve this package:
 - add pretty telescope-based preview of the command (don't forget about length of the input, it can be very big)
 - propose a design for "scripts storage"
 - add compatibility with Boop scripts
-- add possibility to input a parameter, ex. for Caesar Cipher
+- propose a solution for text-based commands arguments
 
 Here is a list of ideas for builtin commands:
 - Sort json

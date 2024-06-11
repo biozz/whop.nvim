@@ -3,10 +3,16 @@
 ---@field options Config: config table extending defaults
 local M = {}
 
-M.defaults = {}
+M.defaults = {
+  builtin_commands = true,
+  commands = {},
+  keymap = "",
+}
 
 ---@class Config
+---@field builtin_commands boolean: enables builtin commands
 ---@field commands table: a set of user defined commands
+---@field keymap string: default keymap to open whop
 M.options = {}
 
 --- We will not generate documentation for this function

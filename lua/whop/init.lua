@@ -26,6 +26,10 @@ local whop = {}
 ---@eval { ['description'] = require('whop.config').__format_keys() }
 whop.setup = function(options)
   require("whop.config").__setup(options)
+  if options.keymap then
+    vim.keymap.set("n", options.keymap, whop.select, { noremap = true, silent = true })
+    vim.keymap.set("v", options.keymap, whop.select, { noremap = true, silent = true })
+  end
   local builtin = require("whop.builtin")
   whop._commands = builtin.commands
   -- Prepend the commands from the config, so
@@ -44,9 +48,10 @@ end
 
 --- Runs a selected command
 --- @param cmd string: command to run
-whop.run_cmd = function(cmd)
+--- @param args table: command to run
+whop.run_cmd = function(cmd, args)
   if type(cmd) == "function" then
-    cmd()
+    cmd(args)
   elseif type(cmd) == "string" then
     vim.cmd(cmd)
   else
@@ -72,7 +77,12 @@ end
 whop.find_and_run_cmd = function(name)
   for _, v in ipairs(whop._commands) do
     if v.name == name then
-      whop.run_cmd(v.cmd)
+      local args = {}
+      for _, inp in ipairs(v.inputs) do
+        local arg = vim.fn.input(inp.prompt)
+        args[inp.dest] = arg
+      end
+      whop.run_cmd(v.cmd, args)
       return true
     end
   end

@@ -79,7 +79,9 @@ The `setup` function has `commands` option, which is a list of objects, containi
 
 `cmd` can be either string or Lua function.
 If it is a string, it will be passed to `vim.cmd` and executed as if you typed `:` (colon), the value of the `cmd` and hit enter.
-If it is a function, it will be called when picked.
+If it is a function, it will be called when picked. Functions have an additional benefit – arguments. You can specify the `inputs` and they will be passed into the function for further customization. This can be useful for transformations, which require additional parameters, ex. Caesar Cipher offset.
+
+Here is a full example:
 
 
 ```lua
@@ -94,7 +96,9 @@ If it is a function, it will be called when picked.
         },
         {
           name = "My other command",
-          cmd = function()
+          inputs = { { prompt = "Arg1:", dest = "arg1" }  }
+          cmd = function(args)
+            -- args['arg1']
             vim.cmd('%s/ //g')
           end,
         }
