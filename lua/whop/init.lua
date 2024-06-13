@@ -78,9 +78,11 @@ whop.find_and_run_cmd = function(name)
   for _, v in ipairs(whop._commands) do
     if v.name == name then
       local args = {}
-      for _, inp in ipairs(v.inputs) do
-        local arg = vim.fn.input(inp.prompt)
-        args[inp.dest] = arg
+      if v.inputs then
+        for _, inp in ipairs(v.inputs) do
+          local arg = vim.fn.input(inp.prompt)
+          args[inp.dest] = arg
+        end
       end
       whop.run_cmd(v.cmd, args)
       return true
