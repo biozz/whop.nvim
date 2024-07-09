@@ -178,6 +178,18 @@ M.commands = {
     name = "[builtin] To lower case (python)",
     cmd = [[%!python -c 'import sys; print(sys.stdin.read()[:-1].lower())']],
   },
+  {
+    name = "[builtin] Generate UUID4 (python)",
+    cmd = [[%!python -c 'import uuid; print(uuid.uuid4())']],
+  },
+  {
+    name = "[builtin] Unix timestamp to ISO formatted datetime (python)",
+    cmd = [[%!python -c 'import sys; from datetime import datetime; print(datetime.utcfromtimestamp(int(sys.stdin.read()[:-1])).isoformat())']],
+  },
+  {
+    name = "[builtin] ISO formatted datetime to Unix timestamp (python)",
+    cmd = [[%!python -c 'import sys; from datetime import datetime; print(int(datetime.fromisoformat(sys.stdin.read()[:-1]).timestamp()))']],
+  },
 }
 
 return M

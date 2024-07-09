@@ -1,5 +1,12 @@
 # Changelog
 
+## 2024-07-10 - v1.2.0
+
+- Add three more builtin commands:
+  - Generate UUID4 (python)
+  - Unix timestamp to ISO formatted datetime (python)
+  - ISO formatted datetime to Unix timestamp (python)
+
 ## 2024-03-03 - v1.1.0
 
 - Add `opts` table to telescope extension to be able to customize the picker
