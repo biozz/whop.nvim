@@ -64,28 +64,36 @@ M.commands = {
     cmd = [[%!tr -d '\n' | sha512sum]],
   },
   {
-    name = "[builtin] Reverse (rev)",
+    name = "[builtin] Reverse each line (rev)",
     cmd = [[%!rev]],
+  },
+  {
+    name = "[builtin] Reverse the order of lines (tac)",
+    cmd = [[%!tac]],
   },
   {
     name = "[builtin] Remove all whitespace (tr)",
     cmd = [[%!tr -d "[:space:]"]],
   },
   {
-    name = "[builtin] Remove blank lines (grep)",
+    name = "[builtin] Remove blank/empty lines (grep)",
     cmd = [[%!grep .]],
   },
   {
-    name = "[builtin] Remove blank lines with spaces only (grep)",
+    name = "[builtin] Remove blank/empty lines with spaces only (grep)",
     cmd = [[%!grep "\S"]],
   },
   {
-    name = "[builtin] Remove blank lines (rg)",
+    name = "[builtin] Remove blank/empty lines (rg)",
     cmd = [[%!rg -N .]],
   },
   {
-    name = "[builtin] Remove blank lines with spaces only (rg)",
+    name = "[builtin] Remove blank/empty lines with spaces only (rg)",
     cmd = [[%!rg -N "\S"]],
+  },
+  {
+    name = "[builtin] Remove blank/empty lines (vim)",
+    cmd = [[%s/\s*\n//]],
   },
   {
     name = "[builtin] Join lines with comma (vim)",
@@ -140,18 +148,18 @@ M.commands = {
     cmd = [[%!ansible-vault decrypt]],
   },
   {
-    name = "[builtin] PowerShell escape characters to Unix",
+    name = "[builtin] PowerShell escape characters to Unix (vim)",
     cmd = function()
       vim.cmd([[%s/\^$/\\/]])
       vim.cmd([[%s/\^\\\^/\\/g]])
     end,
   },
   {
-    name = "[builtin] Change single quotes to double quotes",
+    name = "[builtin] Change single quotes to double quotes (vim)",
     cmd = [[%s/'/"/g]],
   },
   {
-    name = "[builtin] Change double quotes to single quotes",
+    name = "[builtin] Change double quotes to single quotes (vim)",
     cmd = [[%s/"/'/g]],
   },
   {
@@ -189,6 +197,14 @@ M.commands = {
   {
     name = "[builtin] ISO formatted datetime to Unix timestamp (python)",
     cmd = [[%!python -c 'import sys; from datetime import datetime; print(int(datetime.fromisoformat(sys.stdin.read()[:-1]).timestamp()))']],
+  },
+  {
+    name = "[builtin] Shuffle lines (shuf)",
+    cmd = [[%!shuf]],
+  },
+  {
+    name = "[builtin] Sort JSON keys (jq)",
+    cmd = [[%!jq --sort-keys]],
   },
 }
 

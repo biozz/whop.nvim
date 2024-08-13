@@ -1,5 +1,16 @@
 # Changelog
 
+## 2024-08-13 - v1.3.0
+
+- Add more builtin commands:
+  - Remove blank/empty lines (vim)
+  - Reverse the order of lines (tac)
+  - Shuffle lines (shuf)
+  - Sort JSON keys (jq)
+- Rename `Reverse (rev)` to `Reverse each line (rev)`
+- Add `blank/empty` to several commands related to removal of blank lines for ease of searching
+- Add missing `(vim)` suffix to couple of commands
+
 ## 2024-07-10 - v1.2.0
 
 - Add three more builtin commands:

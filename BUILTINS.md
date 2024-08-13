@@ -19,12 +19,14 @@ This a list of built-in whop commands.
 | Build SHA1 (tr, sha1sum)                          | -       |
 | Build SHA256 (tr, sha256sum)                      | -       |
 | Build SHA512 (tr, sha512sum)                      | -       |
-| Reverse (rev)                                     | -       |
+| Reverse each line (rev)                           | -       |
+| Reverse the order of lines (tac)                  | -       |
 | Remove all whitespace (tr)                        | -       |
-| Remove blank lines (grep)                         | -       |
-| Remove blank lines with spaces only (grep)        | -       |
-| Remove blank lines (rg)                           | -       |
-| Remove blank lines with spaces only (rg)          | -       |
+| Remove blank/empty lines (grep)                   | -       |
+| Remove blank/empty lines with spaces only (grep)  | -       |
+| Remove blank/empty lines (rg)                     | -       |
+| Remove blank/empty lines with spaces only (rg)    | -       |
+| Remove blank/empty lines (vim)                    | -       |
 | Join lines with comma (vim)                       | -       |
 | Wrap numbers with single quotes (vim)             | -       |
 | Wrap numbers with double quotes (vim)             | -       |
@@ -38,9 +40,9 @@ This a list of built-in whop commands.
 | Replace commas with newlines (vim)                | -       |
 | Ansible Vault Encrypt (ansible-vault)             | -       |
 | Ansible Vault Decrypt (ansible-vault)             | -       |
-| PowerShell escape characters to Unix              | -       |
-| Change single quotes to double quotes             | -       |
-| Change double quotes to single quotes             | -       |
+| PowerShell escape characters to Unix (vim)        | -       |
+| Change single quotes to double quotes (vim)       | -       |
+| Change double quotes to single quotes (vim)       | -       |
 | snake_case to CamelCase (python)                  | -       |
 | CamelCase to snake_case (python)                  | -       |
 | snake_case to kebab-case (python)                 | -       |
@@ -50,3 +52,5 @@ This a list of built-in whop commands.
 | Generate UUID4 (python)                           | -       |
 | Unix timestamp to ISO formatted datetime (python) | -       |
 | ISO formatted datetime to Unix timestamp (python) | -       |
+| Shuffle lines (shuf)                              | -       |
+| Sort JSON keys (jq)                               | -       |

@@ -11,11 +11,9 @@ Here is a list of things you can do right now to improve this package:
 - propose a solution for text-based commands arguments
 
 Here is a list of ideas for builtin commands:
-- Sort json
 - Markdown quote
 - Count characters (view only)
 - Count words (view only)
-- Shuffle lines
 - JSON to Query String
 - JSON to YAML
 - Lorem ipsum
