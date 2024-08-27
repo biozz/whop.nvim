@@ -30,20 +30,38 @@ whop.setup = function(options)
     vim.keymap.set("n", options.keymap, whop.select, { noremap = true, silent = true })
     vim.keymap.set("v", options.keymap, whop.select, { noremap = true, silent = true })
   end
-  local builtin = require("whop.builtin")
-  whop._commands = builtin.commands
-  -- Prepend the commands from the config, so
-  -- they are at the top of the list
-  for _, cmd in ipairs(options.commands or {}) do
-    table.insert(whop._commands, 1, cmd)
-  end
+  whop._commands = whop.get_commands(options)
 
   -- Prepare command names to be used in telescope
   -- and vim.select() pickers
-  whop._command_names = {}
-  for _, v in ipairs(whop._commands) do
-    table.insert(whop._command_names, v.name)
+  whop._command_names = whop.get_command_names(whop._commands)
+end
+
+whop.get_commands = function(opts)
+  local commands = {}
+  if opts.builtin_commands then
+    for _, cmd in ipairs(require("whop.builtin").commands) do
+      cmd.name = "[builtin] " .. cmd.name
+      table.insert(commands, 1, cmd)
+    end
   end
+
+  -- Prepend the commands from the config, so
+  -- they are at the top of the list
+  for _, cmd in ipairs(opts.commands or {}) do
+    cmd.name = "[user] " .. cmd.name
+    table.insert(commands, 1, cmd)
+  end
+
+  return commands
+end
+
+whop.get_command_names = function(commands)
+  local command_names = {}
+  for _, v in ipairs(commands) do
+    table.insert(command_names, v.name)
+  end
+  return command_names
 end
 
 --- Runs a selected command

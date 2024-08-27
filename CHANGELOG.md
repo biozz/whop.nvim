@@ -1,5 +1,24 @@
 # Changelog
 
+## UNRELEASED (probably v2 due to lots of changes)
+
+- Add Telescope based preview of the command
+  - This feature introduced some refactoring of the core plugin logic
+  - And also I had to duplicate `setup` logic inside Telescope extension
+- Update README
+- Add more builtin commands:
+  - Remove whitespace on each line (vim)
+  - Join lines (vim)
+  - Wrap each line with single quotes (vim)
+  - Wrap each line with double quotes (vim)
+  - Minify and escape JSON (jq)
+  - Unescape JSON (jq)
+  - YAML-JSON-CSV converters via dasel
+  - Insert whatthecommit.com message (curl)
+- Add `silent` modifier to almost all of the commands to prevent annoying messages if the command breaks or not found
+- Remove `[builtin]` prefix from builtin commands and add it dynamically during plugin setup
+- Add `[user]` prefix to user defined commands dynamically during plugin setup
+
 ## 2024-08-13 - v1.3.0
 
 - Add more builtin commands:

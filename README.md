@@ -50,25 +50,49 @@ Here is an all-in-one example using [Lazy](https://github.com/folke/lazy.nvim):
     }
   },
   config = function()
+    local telescope = require("telescope")
+    telescope.setup({
+      -- other config options
+      extensions = {
+        whop = {
+          preview_buffer_line_limit = 1000, -- default is 1000
+        }
+      }
+    })
     telescope.load_extension("whop")
     vim.keymap.set("n", "<leader>tw", ":Telescope whop<CR>", { noremap = true, desc = "whop.nvim (telescope)" })
   end
 }
 ```
 
+#### Telescope command preview
+
+Telescope command picker has an additional feature – command preview. Preview allows you to see what the command would do without applying it to the buffer.
+
+For the preview to work properly you need to make sure that:
+
+- your command has `preview = true` in the definition
+- your buffer is not more than `preview_buffer_line_limit` lines
+
+Most of the builtin commands have preview enabled. By default the preview is disabled for all new commands.
+
 ### `vim.ui.select()`
 
 The select function is available in `require('whop').select()`.
+
+You can either set `keymap` option in the setup function or provide you own `vim.keyamp.set`:
 
 ```lua
 {
   "biozz/whop.nvim",
   config = function()
     local whop = require("whop")
-    whop.setup({})
-    vim.keymap.set("n", "<leader>ww", function()
-      whop.select()
-    end, { noremap = true, desc = "whop.nvim" })
+    whop.setup({
+      keymap = "<leader>ww"
+    })
+    -- vim.keymap.set("n", "<leader>ww", function()
+    --   whop.select()
+    -- end, { noremap = true, desc = "whop.nvim" })
   end
 }
 ```
@@ -83,7 +107,6 @@ If it is a function, it will be called when picked. Functions have an additional
 
 Here is a full example:
 
-
 ```lua
 {
   "biozz/whop.nvim",
@@ -93,6 +116,7 @@ Here is a full example:
         {
           name = "My command",
           cmd = [[%!my_command]],
+          preview = true, -- see "Telescope command preview"
         },
         {
           name = "My other command",
@@ -117,3 +141,4 @@ Here is a full example:
 - [Gool](https://github.com/cloudingcity/gool)
 - [CyberChef](https://gchq.github.io/CyberChef/)
 - [sttr](https://github.com/abhimanyu003/sttr)
+- [texttools.py](https://buttondown.com/hillelwayne/archive/texttools-dot-py/)
