@@ -64,6 +64,16 @@ whop.get_command_names = function(commands)
   return command_names
 end
 
+--- Ensure the plugin is initialized
+--- @return boolean: true if initialized, false otherwise
+whop._ensure_initialized = function()
+  if not whop._commands or not whop._command_names then
+    vim.notify("Whop: Plugin not initialized. Please call whop.setup({...}) first.", vim.log.levels.ERROR)
+    return false
+  end
+  return true
+end
+
 --- Runs a selected command
 --- @param cmd string: command to run
 --- @param args table: command to run
@@ -79,6 +89,10 @@ end
 
 --- Select a command via builtin vim.ui.select
 whop.select = function()
+  if not whop._ensure_initialized() then
+    return
+  end
+  
   vim.ui.select(whop._command_names, {
     prompt = "whop",
     format_item = function(item)
@@ -93,6 +107,10 @@ end
 --- Do nothing if the command was not found.
 --- @param name string: the name of the command to run
 whop.find_and_run_cmd = function(name)
+  if not whop._ensure_initialized() then
+    return false
+  end
+  
   for _, v in ipairs(whop._commands) do
     if v.name == name then
       local args = {}
