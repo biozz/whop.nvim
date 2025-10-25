@@ -1,5 +1,11 @@
 # Changelog
 
+## 2025-10-25 - v1.2.0
+
+- Add initialization checks to prevent errors when plugin is not properly set up
+- Add default `commands = {}` configuration option (linting)
+- Make sure that `mini.pick` and `snacks.picker` are supported alongside existing Telescope and `vim.ui.select()` pickers
+
 ## 2024-03-03 - v1.1.0
 
 - Add `opts` table to telescope extension to be able to customize the picker

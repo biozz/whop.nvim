@@ -3,7 +3,9 @@
 ---@field options Config: config table extending defaults
 local M = {}
 
-M.defaults = {}
+M.defaults = {
+  commands = {}
+}
 
 ---@class Config
 ---@field commands table: a set of user defined commands

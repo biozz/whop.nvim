@@ -28,7 +28,7 @@ Here is what this plugin can do:
 Now you have three options to start using it:
 
 - Telescope extension
-- `vim.ui.select()`
+- `vim.ui.select()` (that means `mini.pick` and `snacks.picker` are supported as well)
 - `:Whop` command
 
 ### Telescope
